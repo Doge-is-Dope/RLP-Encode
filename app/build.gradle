@@ -38,8 +38,12 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     implementation ("com.nftco:flow-jvm-sdk:0.7.1")
-    implementation("com.github.komputing.kethereum:rlp:0.85.7")
 
+    // kethereum - rlp
+//    implementation("com.github.komputing.kethereum:rlp:0.85.7")
+
+    // tdf - rlp
+    implementation("com.github.TrustedDataFramework:java-rlp:1.1.20")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

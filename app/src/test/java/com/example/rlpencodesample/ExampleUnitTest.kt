@@ -4,6 +4,8 @@ import com.nftco.flow.sdk.FlowTransaction
 import com.nftco.flow.sdk.bytesToHex
 import com.nftco.flow.sdk.hexToBytes
 import org.junit.Test
+import org.tdf.rlp.RLPCodec
+import java.util.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -19,11 +21,23 @@ class ExampleUnitTest {
         println("bytes: ${bytes.contentToString()}")
         val tx = FlowTransaction.of(hex.hexToBytes())
         println("tx: $tx")
+        println("tx script: ${tx.script.stringValue}")
     }
 
     @Test
     fun hex_to_bytes() {
-        val bytes = byteArrayOf(40, -34, 101, -77, -75, -24, 50, 69)
-        println(bytes.bytesToHex())
+        val book = Book(
+            id = 1,
+            title = "abc",
+            testStringList = listOf(),
+            testBytes = byteArrayOf(-61, -128, -128, -128),
+            testIntsList = listOf(intArrayOf(111, 222, 333)),
+//            testBytesList = listOf()
+        )
+
+        val encoded = RLPCodec.encode(book)
+        println("encoded: ${Arrays.toString(encoded)}")
+        val decoded = RLPCodec.decode(encoded, Book::class.java)
+        println("decoded: $decoded")
     }
 }

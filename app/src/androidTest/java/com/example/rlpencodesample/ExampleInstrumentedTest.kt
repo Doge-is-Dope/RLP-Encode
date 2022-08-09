@@ -6,6 +6,8 @@ import com.nftco.flow.sdk.hexToBytes
 
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.tdf.rlp.RLPCodec
+import java.util.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -22,5 +24,22 @@ class ExampleInstrumentedTest {
         println("bytes: ${bytes.contentToString()}")
         val tx = FlowTransaction.of(bytes)
         println("tx: $tx")
+    }
+
+    @Test
+    fun hex_to_bytes() {
+        val book = Book(
+            id = 1,
+            title = "abc",
+            testStringList = listOf(),
+            testBytes = byteArrayOf(-61, -128, -128, -128),
+            testIntsList = listOf(intArrayOf(111, 222, 333)),
+//            testBytesList = listOf()
+        )
+
+        val encoded = RLPCodec.encode(book)
+        println("encoded: ${Arrays.toString(encoded)}")
+        val decoded = RLPCodec.decode(encoded, Book::class.java)
+        println("decoded: $decoded")
     }
 }
