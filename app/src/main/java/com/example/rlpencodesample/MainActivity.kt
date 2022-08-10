@@ -12,10 +12,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val book = Book(
-            id = 1,
-            title = "abc",
-            testStringList = listOf(),
-            testBytes = byteArrayOf(-61, -128, -128, -128),
+            title = "ABC",
+            testBytesList = listOf()
         )
         val encoded = RLPCodec.encode(book)
         Log.d("Test", "Encoded: ${Arrays.toString(encoded)}")

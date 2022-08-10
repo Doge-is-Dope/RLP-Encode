@@ -1,7 +1,6 @@
 package com.example.rlpencodesample
 
 import com.nftco.flow.sdk.FlowTransaction
-import com.nftco.flow.sdk.bytesToHex
 import com.nftco.flow.sdk.hexToBytes
 import org.junit.Test
 import org.tdf.rlp.RLPCodec
@@ -25,17 +24,35 @@ class ExampleUnitTest {
     }
 
     @Test
-    fun hex_to_bytes() {
+    fun rlp_decode_list() {
         val book = Book(
-            id = 1,
-            title = "abc",
-            testStringList = listOf(),
-            testBytes = byteArrayOf(-61, -128, -128, -128),
+            title = "Hello",
+            testBytesList = listOf(
+                listOf(-61, -128, -128, -128),
+                listOf(-61, -128, -128, -128)
+            )
         )
 
         val encoded = RLPCodec.encode(book)
         println("encoded: ${Arrays.toString(encoded)}")
         val decoded = RLPCodec.decode(encoded, Book::class.java)
-        println("decoded: $decoded")
+        println("decoded title: ${decoded.title}")
+        println("decoded bytes list: ${decoded.testBytesList}")
+    }
+
+    @Test
+    fun rlp_decode_array() {
+        val cat = Cat(
+            name = "World",
+            testBytesList = listOf(
+                byteArrayOf(-61, -128, -128, -128),
+                byteArrayOf(-61, -128, -128, -128)
+            )
+        )
+        val encoded = RLPCodec.encode(cat)
+        println("encoded byte[]: ${Arrays.toString(encoded)}")
+        val decoded = RLPCodec.decode(encoded, Cat::class.java)
+        println("decoded name: ${decoded.name}")
+        println("decoded first byte[]: ${decoded.testBytesList.first().contentToString()}")
     }
 }
