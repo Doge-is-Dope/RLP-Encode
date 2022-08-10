@@ -7,16 +7,12 @@ class Book(
     private val title: String,
     private val testStringList: List<String> = listOf(),
     private val testBytes: ByteArray,
-    private val testIntsList: List<IntArray> = listOf(),
-//    private val testBytesList: List<ByteArray> = listOf(),
 ) {
     constructor() : this(
         id = 0,
         title = "",
         testStringList = listOf(),
         testBytes = byteArrayOf(),
-        testIntsList = listOf<IntArray>(),
-//        testBytesList = listOf<ByteArray>()
     )
 }
 

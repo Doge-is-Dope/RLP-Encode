@@ -31,8 +31,6 @@ class ExampleUnitTest {
             title = "abc",
             testStringList = listOf(),
             testBytes = byteArrayOf(-61, -128, -128, -128),
-            testIntsList = listOf(intArrayOf(111, 222, 333)),
-//            testBytesList = listOf()
         )
 
         val encoded = RLPCodec.encode(book)
