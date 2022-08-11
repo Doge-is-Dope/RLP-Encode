@@ -1,6 +1,5 @@
 package com.example.rlp.container
 
-import com.example.rlp.CollectionContainer
 import com.example.rlp.Container
 import com.example.rlp.MapContainer
 import java.lang.RuntimeException

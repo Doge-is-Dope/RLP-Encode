@@ -7,6 +7,8 @@ import static com.example.rlp.RLPConstants.OFFSET_SHORT_LIST;
 import static com.example.rlp.RLPConstants.SIZE_THRESHOLD;
 import static com.example.rlp.RLPElement.readRLPTree;
 
+import com.example.rlp.container.CollectionContainer;
+
 import lombok.NonNull;
 
 import java.lang.reflect.Array;
@@ -289,10 +291,10 @@ public final class RLPCodec {
                 return decode(element, container.asRaw(), context);
             case COLLECTION: {
                 CollectionContainer collectionContainer = container.asCollection();
-                Collection res = (Collection) RLPUtils.newInstance(getDefaultImpl(collectionContainer.collectionType));
+                Collection res = (Collection) RLPUtils.newInstance(getDefaultImpl(collectionContainer.getCollectionType()));
                 if (element.isNull()) return res;
                 for (int i = 0; i < element.size(); i++) {
-                    res.add(decodeContainer(element.get(i), collectionContainer.contentType, context));
+                    res.add(decodeContainer(element.get(i), collectionContainer.getContentType(), context));
                 }
                 return res;
             }

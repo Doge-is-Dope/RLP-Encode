@@ -1,5 +1,6 @@
 package com.example.rlp;
 
+import com.example.rlp.container.CollectionContainer;
 import com.example.rlp.container.ContainerType;
 import com.example.rlp.container.Raw;
 
@@ -39,7 +40,7 @@ public interface Container<V> {
         if (!field.getType().isAssignableFrom(clazz))
             throw new RuntimeException("cannot assign " + clazz + " to " + field.getType());
         if (container.getType() == ContainerType.COLLECTION) {
-            container.asCollection().collectionType = clazz;
+            container.asCollection().setCollectionType(clazz);
         }
         if (container.getType() == ContainerType.MAP) {
             container.asMap().mapType = clazz;
@@ -86,7 +87,7 @@ public interface Container<V> {
             }
             case COLLECTION: {
                 CollectionContainer con = container.asCollection();
-                con.contentType = fromType(types[0]);
+                con.setContentType(fromType(types[0]));
                 return con;
             }
             default:
