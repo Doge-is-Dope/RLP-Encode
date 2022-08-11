@@ -2,23 +2,21 @@ package com.example.rlp.container
 
 import com.example.rlp.Container
 
-class CollectionContainer<C : Collection<T>?, T> internal constructor(var collectionType: Class<*>) :
-    Container<T> {
-    var contentType: Container<*>? = null
+class CollectionContainer<C : Collection<V>?, V> internal constructor(var collectionType: Class<out C>) :
+    Container<V> {
+    var contentType: Container<out V>? = null
 
-    override fun getType(): ContainerType {
-        return ContainerType.COLLECTION
-    }
+    override fun getType(): ContainerType = ContainerType.COLLECTION
 
-    override fun asRaw(): Class<T> {
+    override fun asRaw(): Class<V> {
         throw Exception("not a raw type")
     }
 
-    override fun asCollection(): CollectionContainer<C, T> {
+    override fun asCollection(): CollectionContainer<out C, V> {
         return this
     }
 
-    override fun asMap(): MapContainer<out MutableMap<*, T>?, *, T> {
+    override fun asMap(): MapContainer<out Map<*, V>?, *, V> {
         throw Exception("not a map container")
     }
 }
