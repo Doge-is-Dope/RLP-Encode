@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.rlpencodesample"
-        minSdk 21
+        minSdk 24
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -32,6 +32,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":rlp"))
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
@@ -43,7 +44,7 @@ dependencies {
 //    implementation("com.github.komputing.kethereum:rlp:0.85.7")
 
     // tdf - rlp
-    implementation("com.github.TrustedDataFramework:java-rlp:1.1.20")
+//    implementation("com.github.TrustedDataFramework:java-rlp:1.1.20")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

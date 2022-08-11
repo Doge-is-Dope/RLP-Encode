@@ -1,9 +1,9 @@
 package com.example.rlpencodesample
 
+import com.example.rlp.RLPCodec
 import com.nftco.flow.sdk.FlowTransaction
 import com.nftco.flow.sdk.hexToBytes
 import org.junit.Test
-import org.tdf.rlp.RLPCodec
 import java.util.*
 
 /**

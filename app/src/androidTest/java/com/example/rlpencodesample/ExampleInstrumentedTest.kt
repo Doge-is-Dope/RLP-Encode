@@ -1,12 +1,12 @@
 package com.example.rlpencodesample
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.rlp.RLPCodec
 import com.nftco.flow.sdk.FlowTransaction
 import com.nftco.flow.sdk.hexToBytes
 
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.tdf.rlp.RLPCodec
 import java.util.*
 
 /**
