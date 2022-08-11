@@ -1,5 +1,7 @@
 package com.example.rlp;
 
+import com.example.rlp.container.ContainerType;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
