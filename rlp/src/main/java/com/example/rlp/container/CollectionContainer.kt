@@ -1,7 +1,6 @@
 package com.example.rlp.container
 
 import com.example.rlp.Container
-import com.example.rlp.MapContainer
 
 class CollectionContainer<C : Collection<T>?, T> internal constructor(var collectionType: Class<*>) :
     Container<T> {

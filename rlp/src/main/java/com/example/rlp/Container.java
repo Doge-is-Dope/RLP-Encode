@@ -2,6 +2,7 @@ package com.example.rlp;
 
 import com.example.rlp.container.CollectionContainer;
 import com.example.rlp.container.ContainerType;
+import com.example.rlp.container.MapContainer;
 import com.example.rlp.container.Raw;
 
 import java.lang.reflect.Field;
@@ -43,7 +44,7 @@ public interface Container<V> {
             container.asCollection().setCollectionType(clazz);
         }
         if (container.getType() == ContainerType.MAP) {
-            container.asMap().mapType = clazz;
+            container.asMap().setMapType(clazz);
         }
         return container;
     }
@@ -81,8 +82,8 @@ public interface Container<V> {
                 return container;
             case MAP: {
                 MapContainer con = container.asMap();
-                con.keyType = fromType(types[0]);
-                con.valueType = fromType(types[1]);
+                con.setKeyType(fromType(types[0]));
+                con.setValueType(fromType(types[1]));
                 return con;
             }
             case COLLECTION: {

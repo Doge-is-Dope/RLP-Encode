@@ -8,6 +8,7 @@ import static com.example.rlp.RLPConstants.SIZE_THRESHOLD;
 import static com.example.rlp.RLPElement.readRLPTree;
 
 import com.example.rlp.container.CollectionContainer;
+import com.example.rlp.container.MapContainer;
 
 import lombok.NonNull;
 
@@ -300,12 +301,12 @@ public final class RLPCodec {
             }
             case MAP: {
                 MapContainer mapContainer = container.asMap();
-                Map res = (Map) RLPUtils.newInstance(getDefaultImpl(mapContainer.mapType));
+                Map res = (Map) RLPUtils.newInstance(getDefaultImpl(mapContainer.getMapType()));
                 if (element.isNull()) return res;
                 for (int i = 0; i < element.size(); i += 2) {
                     res.put(
-                            decodeContainer(element.get(i), mapContainer.keyType, context),
-                            decodeContainer(element.get(i + 1), mapContainer.valueType, context)
+                            decodeContainer(element.get(i), mapContainer.getKeyType(), context),
+                            decodeContainer(element.get(i + 1), mapContainer.getValueType(), context)
                     );
                 }
                 return res;
