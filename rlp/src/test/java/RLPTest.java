@@ -1,4 +1,4 @@
-import static com.example.rlp.Container.fromField;
+import static com.example.rlp.container.Container.fromField;
 import static com.example.rlp.RLPCodec.decodeInt;
 import static com.example.rlp.RLPCodec.decodeLong;
 import static com.example.rlp.RLPCodec.decodeShort;
@@ -15,7 +15,7 @@ import static com.example.rlp.RLPItem.ONE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-import com.example.rlp.Container;
+import com.example.rlp.container.Container;
 import com.example.rlp.LazyElement;
 import com.example.rlp.RLP;
 import com.example.rlp.RLPCodec;

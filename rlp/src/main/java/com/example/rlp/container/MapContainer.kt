@@ -1,24 +1,25 @@
 package com.example.rlp.container
 
-import com.example.rlp.Container
 import java.lang.RuntimeException
 
-class MapContainer<M : Map<K, V>?, K, V> internal constructor(var mapType: Class<out M>) :
-    Container<V> {
-    var keyType: Container<out K>? = null
-    var valueType: Container<out V>? = null
+class MapContainer<out M : Map<K, V>, K, V> internal constructor(
+    var mapType: Class<*>,
+    override val type: ContainerType = ContainerType.MAP
+) : Container<V> {
 
-    override fun getType(): ContainerType = ContainerType.MAP
+    var keyType: Container<in K>? = null
+
+    var valueType: Container<in V>? = null
 
     override fun asRaw(): Class<V> {
         throw RuntimeException("not a raw type")
     }
 
-    override fun asCollection(): CollectionContainer<out Collection<V>?, V> {
+    override fun asCollection(): CollectionContainer<Collection<V>, V> {
         throw RuntimeException("not a collection container")
     }
 
-    override fun asMap(): MapContainer<out M, out K, V> {
+    override fun asMap(): MapContainer<M, K, V> {
         return this
     }
 }

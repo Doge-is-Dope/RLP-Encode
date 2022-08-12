@@ -8,6 +8,7 @@ import static com.example.rlp.RLPConstants.SIZE_THRESHOLD;
 import static com.example.rlp.RLPElement.readRLPTree;
 
 import com.example.rlp.container.CollectionContainer;
+import com.example.rlp.container.Container;
 import com.example.rlp.container.MapContainer;
 
 import lombok.NonNull;
