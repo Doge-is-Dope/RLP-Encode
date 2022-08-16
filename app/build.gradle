@@ -32,19 +32,26 @@ android {
 }
 
 dependencies {
-    implementation(project(":rlp"))
     implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    implementation ("com.nftco:flow-jvm-sdk:0.7.1")
+//    implementation ("com.nftco:flow-jvm-sdk:0.7.1")
+//    implementation("com.github.Doge-is-Dope:flow-jvm-sdk:rlp-android-SNAPSHOT")
+//    implementation ("com.github.portto:flow-jvm-sdk:rlp-android-SNAPSHOT")
+
+    // local rlp module
+    implementation(project(":rlp"))
 
     // kethereum - rlp
 //    implementation("com.github.komputing.kethereum:rlp:0.85.7")
 
     // tdf - rlp
 //    implementation("com.github.TrustedDataFramework:java-rlp:1.1.20")
+
+    // tdf - rlp android-patched
+//    implementation("com.github.Doge-is-Dope:java-rlp:rlp-android-SNAPSHOT")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
